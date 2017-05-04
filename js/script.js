@@ -19,7 +19,7 @@ function loadData() {
     // YOUR CODE GOES HERE!
     var ny_url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     ny_url += '?' + $.param({
-        'api-key' : "8bab2b2e1cea4d7893a2284117356ba2",
+        'api-key' : "8bab2b2e1cea4d7893a2284117356ba2dee",
         'q' : street + ',' + city
     });
     // $.ajax({
@@ -52,6 +52,8 @@ function loadData() {
         // console.log(result.response.docs[i].snippet);
         }
         $('.nytimes-container').append(ny_articles);
+    }).fail(function(){
+        $('.nytimes-container').append("<h3> Artilcles could not be loaded</h3><p>Something went wrong with NY Times!!.</p>")
     })
     return false;
 };
