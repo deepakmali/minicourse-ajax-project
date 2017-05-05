@@ -19,7 +19,7 @@ function loadData() {
     // YOUR CODE GOES HERE!
     var ny_url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     ny_url += '?' + $.param({
-        'api-key' : "8bab2b2e1cea4d7893a2284117356ba2dee",
+        'api-key' : "8bab2b2e1cea4d7893a2284117356ba2",
         'q' : street + ',' + city
     });
     // $.ajax({
