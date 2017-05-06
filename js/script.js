@@ -54,7 +54,24 @@ function loadData() {
         $('.nytimes-container').append(ny_articles);
     }).fail(function(){
         $('.nytimes-container').append("<h3> Artilcles could not be loaded</h3><p>Something went wrong with NY Times!!.</p>")
-    })
+    });
+
+    wiki_url = "http://en.wikipedia.org/w/api.php?action=opensearch&search=" + city + "&format=json&callback=wikiCallback";
+    $.ajax({
+        url : wiki_url,
+        dataType : 'jsonp',
+        success : function(data){
+            response = data[1] ;
+            for (var i = 0; i < response.length; i++) {
+                // console.log(response[i]);
+                article_str = response[i];
+                article_url = "http://en.wikipedia.org/wiki/" + article_str ;
+                $wikiElem.append('<li><a href="' + article_url + '">' + article_str + '</a></li>');
+            }
+            // console.log(data[1].length);
+        }
+    });
+
     return false;
 };
 
